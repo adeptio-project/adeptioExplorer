@@ -1,0 +1,58 @@
+extends layout
+
+block content   
+  script.
+    $(document).ready(function(){
+      console.log('masternodes table');
+      var ctable = $('#masternodes-table').dataTable( {
+        autoWidth: true,
+        searching: true,
+        ordering: true,
+        responsive: true,
+        lengthChange: true,
+        processing: false,
+        bPaginate: true,
+        pageLength: 25,
+        order: [[ 3, "desc" ]],
+        ajax: {
+          url: '/ext/masternodeslistfull',
+          dataSrc: function ( json ) {
+            for ( var i=0;i<json.data.length; i++ ) {
+              json.data[i]['address'] = "<a href='/address/" + json.data[i]['address'] + "'>" + json.data[i]['address'] + "</a>";
+              json.data[i]['lastseen'] = new Date((json.data[i]['lastseen']) * 1000).toLocaleString();
+              if (json.data[i]['lastpaid']> 0) 
+                json.data[i]['lastpaid'] = secToHoursMinSecString((Date.now()/1000) - json.data[i]['lastpaid']);
+              else
+                json.data[i]['lastpaid'] = '<em>not available</em>'; 
+              if (json.data[i]['activetime']> 0)
+                json.data[i]['activetime'] = formatMilliseconds(json.data[i]['activetime']);
+              else
+                json.data[i]['activetime'] = '<em>not available</em>';   
+            }
+            return json.data;
+          }
+        },
+        columns: [
+          { data: 'address', width: '20%', className: 'text-left' },
+          { data: 'status', width: '10%' },
+          { data: 'lastseen', width:'20%' },
+          { data: 'lastpaid', width:'20%' },
+          { data: 'activetime', width:'10%' },
+          { data: 'ip', width:'30%' },
+        ]
+      });
+    });
+  .col-md-12(style="margin-bottom: 4%")
+    .panel.panel-default
+      .panel-heading
+        strong #{settings.locale.net_connections}
+      table#masternodes-table.table.table-bordered.table-striped
+        thead
+          tr
+            th #{settings.locale.mn_address}
+            th.text-center #{settings.locale.mn_status}
+            th.text-center #{settings.locale.mn_lastseen}
+            th.text-center #{settings.locale.mn_lastpaid}
+            th.text-center #{settings.locale.mn_activetime}
+            th.text-center #{settings.locale.mn_ip}
+        tbody.text-center
