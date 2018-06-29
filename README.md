@@ -1,13 +1,13 @@
 Adeptio eXplorer - v1.0.0.1
 ================
 
-The adeptio block explorer with masternode implementation and json parse data
+Adeptio block explorer with masternode implementation and json parse data
 
 This project is a fork of [Iquidus Explorer](https://github.com/iquidus/explorer) so massive thanks go out to Luke Williams for his code! Thank you!!!
 
 ### See it in action
 
-*  [explorer.adeptio.cc](https://github.com/adeptio-project)
+*  [explorer.adeptio.cc](https://explorer.adeptio.cc)
 
 
 ### Requires
@@ -36,7 +36,7 @@ Create user with read/write access:
 
 ### Get the source
 
-    git clone https://github.com/suprnurd/ciquidus explorer
+    git clone https://github.com/adeptio-project/adeptioExplorer
 
 ### Install node modules
 
@@ -101,11 +101,6 @@ forcesync.sh and forcesynclatest.sh (located in scripts/) can be used to force t
 The wallet connected to Ciquidus must be running with atleast the following flags:
 
     -daemon -txindex
-
-### Donate
-    
-    CHC: CLkWg5YSLod772uLzsFRxHgHiWVGAJSezm
-    BTC: 1J8Chi5teDJrvBtSuQhioNCHfTNBCcCrPx
 
 ### Known Issues
 
