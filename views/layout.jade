@@ -135,10 +135,10 @@ html
                 a.navbar-link(href='/info')
                   span.glyphicon.glyphicon-info-sign
                   span.menu-text #{settings.locale.menu_api}
-     <div class="text-center"><img src="#{settings.logo}" style="margin-bottom:30px;"></div>
+    <div class="text-center"><img src="#{settings.logo}" style="margin-bottom:30px;"></div>
     .col-md-12
       .row.text-center
-        .col-md-2.col-md-offset-1
+        .col-md-2.col-md-offset-2
           .panel.panel-default.hidden-sm.hidden-xs
             .panel-heading
               if settings.nethash_units == 'K'
@@ -199,19 +199,8 @@ html
                   label#lblX1
                 else
                   label#supply -
-        .col-md-2
-          .panel.panel-default.hidden-sm.hidden-xs
-            .panel-heading
-              strong #{settings.markets.exchange} Price
-            .panel-body
-              #pricepanel
-                span.glyphicon.fa.fa-rocket
-                if settings.index.difficulty == 'Hybrid'
-                  label#lastPrice -
-                  <br>
-                  label#lblX1
-                else
-                  label#lastPrice -                
+
+      <div style="font-family: Verdana, Tahoma, Arial, sans-serif;font-size: 10px;color: #C9C6BD;text-align: right;padding: 0;margin: 0 auto;width: 400px;border: 2px solid #ddd!important;"><iframe src="https://widget.coinlib.io/widget?type=single&theme=light&coin_id=1110938&pref_coin_id=1505" width="396" height="150" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;"></iframe>powered by&nbsp;<a href="https://coinlib.io" target="_blank" style="font-size:10px; color:#C9C6BD; text-decoration:none;">Coinlib</a>&nbsp;</div>		  
 
       .row.text-center(style='margin-top:10px;margin-bottom:20px;')
         form.form-inline(method='post', action='/search')
