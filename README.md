@@ -7,7 +7,7 @@ This project is a fork of [Iquidus Explorer](https://github.com/iquidus/explorer
 
 ### See it in action
 
-*  [explorer.adeptio.cc](https://github.com/adeptio-project)
+*  [explorer.adeptio.cc](https://explorer.adeptio.cc)
 
 ### Requires
 
@@ -35,7 +35,7 @@ Create user with read/write access:
 
 ### Get the source
 
-    git clone https://github.com/suprnurd/ciquidus explorer
+    git clone https://github.com/adeptio-project/adeptioExplorer.git
 
 ### Install node modules
 

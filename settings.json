@@ -33,10 +33,10 @@
 
   // database settings (MongoDB)
   "dbsettings": {
-    "user": "ciquidus",
-    "password": "3xp!0reR",
-    "database": "explorerdb",
-    "address": "localhost",
+    "user": "",
+    "password": "",
+    "database": "",
+    "address": "",
     "port": 27017
   },
 
