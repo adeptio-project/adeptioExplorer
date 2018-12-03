@@ -1,4 +1,4 @@
-Adeptio eXplorer - v1.0.0.1
+Adeptio eXplorer - v1.0.0.2
 ================
 
 The adeptio block explorer with masternode implementation and json parse data
