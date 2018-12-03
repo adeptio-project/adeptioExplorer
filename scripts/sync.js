@@ -95,7 +95,7 @@ function is_locked(cb) {
     var fname = './tmp/' + database + '.pid';
     fs.exists(fname, function (exists){
       if(exists) {
-        return cb(true);
+        return cb(false);
       } else {
         return cb(false);
       }
@@ -121,7 +121,6 @@ dbString = dbString + '/' + settings.dbsettings.database;
 is_locked(function (exists) {
   if (exists) {
     console.log("Script already running..");
-    process.exit(0);
   } else {
     create_lock(function (){
       console.log("script launched with pid: " + process.pid);

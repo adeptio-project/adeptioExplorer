@@ -33,9 +33,9 @@
 
   // database settings (MongoDB)
   "dbsettings": {
-    "user": "",
-    "password": "",
-    "database": "",
+    "user": "ciquidus",
+    "password": "3xp!0reR",
+    "database": "explorerdb",
     "address": "localhost",
     "port": 27017
   },
@@ -48,8 +48,8 @@
   "wallet": {
     "host": "localhost",
     "port": 9078,
-    "user": "",
-    "pass": ""
+    "user": "adeptiorpc",
+    "pass": "xxx"
   },
 
   // confirmations
@@ -64,9 +64,9 @@
     "markets": false,
     "richlist": true,
     "twitter": true,
-    "facebook": false,
+    "facebook": true,
     "googleplus": false,
-    "bitcointalk": false,
+    "bitcointalk": true,
     "website": true,
     "slack": true,
     "github": true,
@@ -113,13 +113,13 @@
   //supported markets: bittrex, poloniex, yobit, empoex, bleutrade, cryptopia, ccex, coinexchange, crex24
   //default market is loaded by default and determines last price in header
   "markets": {
-    "coin": "ADE",
+    "coin": "ECA",
     "exchange": "BTC",
-    "enabled": ["crex24"],
-    "cryptopia_id": "2186",
+    "enabled": ["cryptopia"],
+    "cryptopia_id": "5909",
     "ccex_key" : "Get-Your-Own-Key",
     "coinexchange_id": "18",
-    "default": "crex24"
+    "default": "cryptopia"
   },
 
   // richlist/top100 settings
@@ -140,9 +140,9 @@
 
   // twitter, facebook, googleplus, bitcointalk, github, slack, website
   "twitter": "adeptioproject",
-  "facebook": "yourfacebookpage",
-  "googleplus": "yourgooglepluspage",
-  "bitcointalk": "yourbitcointalktopicvalue",
+  "facebook": "AdeptioProject-1637877816511858",
+  "googleplus": "",
+  "bitcointalk": "4368475.0",
   "github": "adeptio-project/adeptio",
   "slack": "https://discord.gg/RBXjTBa",
   "website": "https://adeptio.cc",
@@ -189,6 +189,6 @@
 //  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "2/5 init masternode","type":"primary"},
 //  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "3/5 init masternode","type":"primary"},
 //  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "4/5 init masternode","type":"primary"},
-//  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "5/5 init masternode","type":"primary"}
+//  "AP4FBQdztKJJQMQYmvz5U9KGgf128BfwZu": {"label": "5/5 init masternode","type":"primary"}
   }
 }
