@@ -1,4 +1,4 @@
-Adeptio eXplorer - v1.0.0.2
+Adeptio eXplorer - v2.0.0.0
 ================
 
 The adeptio block explorer with masternode implementation and json parse data
@@ -19,6 +19,7 @@ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get 
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 && sudo apt-get update -y && sudo systemctl start mongod
 
 *  adeptiod
+
 https://wiki.adeptio.cc/books/adeptio-repository/page/apt-repository-for-ubuntu-1604-1804
 
 ### Create database
