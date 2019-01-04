@@ -78,7 +78,7 @@ After=network.target
 [Service]
 User=root
 Group=root
-WorkingDirectory=/home/explorer/explorer
+WorkingDirectory=/home/explorer/adeptioExplorer
 ExecStart=/usr/bin/npm start
 TimeoutSec=120
 
