@@ -67,6 +67,24 @@ As of version 1.4.0 the explorer defaults to cluster mode, forking an instance o
 To stop the cluster you can use
 
     npm stop
+    
+### SystemD process:
+
+cat /etc/systemd/system/explorer.service
+[Unit]
+Description=npm service
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/home/explorer/explorer
+ExecStart=/usr/bin/npm start
+TimeoutSec=120
+
+[Install]
+WantedBy=multi-user.target
+
 
 ### Syncing databases with the blockchain
 
