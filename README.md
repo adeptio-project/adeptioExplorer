@@ -124,10 +124,10 @@ sync.js (located in scripts/) is used for updating the local databases. This scr
 
 *Example crontab; update index every minute and market data every 2 minutes*
 
-    */2 * * * * cd /home/explorer/explorer && /usr/bin/nodejs scripts/sync.js index update > /dev/null 2>&1
-    */5 * * * * cd /home/explorer/explorer && /usr/bin/nodejs scripts/sync.js market > /dev/null 2>&1
-    */15 * * * * cd /home/explorer/explorer && /usr/bin/nodejs scripts/peers.js > /dev/null 2>&1
-    */5 * * * * /home/explorer/explorer/masternode_data_to_json.sh
+    */2 * * * * cd /home/explorer/adeptioExplorer && /usr/bin/nodejs scripts/sync.js index update > /dev/null 2>&1
+    */5 * * * * cd /home/explorer/adeptioExplorer && /usr/bin/nodejs scripts/sync.js market > /dev/null 2>&1
+    */15 * * * * cd /home/explorer/adeptioExplorer && /usr/bin/nodejs scripts/peers.js > /dev/null 2>&1
+    */5 * * * * /home/explorer/adeptioExplorer/masternode_data_to_json.sh
     */15 * * * * /home/explorer/check_service.sh
 
 forcesync.sh and forcesynclatest.sh (located in scripts/) can be used to force the explorer to sync at the specified block heights
