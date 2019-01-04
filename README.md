@@ -46,7 +46,7 @@ Create user with read/write access:
 
 ### Install node modules
 
-    cd explorer && npm install --production
+    cd adeptioExplorer && npm install --production
 
 ### Configure
 
@@ -107,11 +107,6 @@ forcesync.sh and forcesynclatest.sh (located in scripts/) can be used to force t
 The wallet connected to Ciquidus must be running with atleast the following flags:
 
     -daemon -txindex
-
-### Donate
-    
-    CHC: CLkWg5YSLod772uLzsFRxHgHiWVGAJSezm
-    BTC: 1J8Chi5teDJrvBtSuQhioNCHfTNBCcCrPx
 
 ### Known Issues
 
