@@ -183,7 +183,8 @@
   // type (optional) = class of label, valid types: default, primary, warning, danger, success
   // url (optional) = url to link to for more information
   "labels": {
-  "AP4FBQdztKJJQMQYmvz5U9KGgf128BfwZu": {"label": "adeptio dev team", "type":"success", "url":"https://adeptio.cc"}
+  "ASpLv9c3UTN6SZXYR29iW46xFGjHRRvPWf": {"label": "adeptio dev team", "type":"success", "url":"https://adeptio.cc"},
+  "ASpLv9c3UTN6SZXYR29iW46xFGjHRRvPWf": {"label": "BurnAddress", "type":"danger", "url":"https://adeptio.cc"}
 //  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "treasure","type":"primary"},
 //  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "1/5 init masternode","type":"primary"},
 //  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "2/5 init masternode","type":"primary"},
