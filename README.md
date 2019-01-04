@@ -85,6 +85,16 @@ TimeoutSec=120
 [Install]
 WantedBy=multi-user.target
 
+### Check service:
+
+cat check_service.sh 
+#!/usr/bin/env bash
+
+pid=$(pgrep adeptiod)
+
+if [ -z "$pid" ]; then
+	/usr/bin/adeptiod --daemon
+fi
 
 ### Syncing databases with the blockchain
 
@@ -118,7 +128,7 @@ sync.js (located in scripts/) is used for updating the local databases. This scr
     */5 * * * * cd /home/explorer/explorer && /usr/bin/nodejs scripts/sync.js market > /dev/null 2>&1
     */15 * * * * cd /home/explorer/explorer && /usr/bin/nodejs scripts/peers.js > /dev/null 2>&1
     */5 * * * * /home/explorer/explorer/masternode_data_to_json.sh
-
+    */15 * * * * /home/explorer/check_service.sh
 
 forcesync.sh and forcesynclatest.sh (located in scripts/) can be used to force the explorer to sync at the specified block heights
 
