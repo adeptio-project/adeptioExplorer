@@ -35,9 +35,10 @@ block content
         columns: [
           { data: 'address', width: '20%', className: 'text-left' },
           { data: 'status', width: '10%' },
-          { data: 'lastseen', width:'20%' },
-          { data: 'lastpaid', width:'20%' },
+          { data: 'lastseen', width:'10%' },
+          { data: 'lastpaid', width:'10%' },
           { data: 'activetime', width:'10%' },
+          { data: 'network', width:'10%' },          
           { data: 'ip', width:'30%' },
         ]
       });
@@ -54,5 +55,6 @@ block content
             th.text-center #{settings.locale.mn_lastseen}
             th.text-center #{settings.locale.mn_lastpaid}
             th.text-center #{settings.locale.mn_activetime}
+            th.text-center #{settings.locale.mn_network}
             th.text-center #{settings.locale.mn_ip}
         tbody.text-center

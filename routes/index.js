@@ -206,43 +206,49 @@ router.get('/ext/masternodeslistfull', function(req, res) {
     for (var key in list) {
 
       if (list.hasOwnProperty(key)) {
-        var mnData = list[key].split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } );
+        var mnData = list[key]
+        var txhash = mnData['txhash']
         var mnItem = {
           address: "",
           status: "",
           lastseen: "",
           lastpaid: null,
-	  activetime: "",
+	        activetime: "",
+          network: "",
           ip: ""
         };
 
         // Address
         if (settings.masternodes.list_format.address === 0)
-          mnItem.address = key;
+          mnItem.address = txhash;
         else if (settings.masternodes.list_format.address > -1)
-          mnItem.address = mnData[settings.masternodes.list_format.address - 1];
+          mnItem.address = mnData['addr'];
 
         // Status
         if (settings.masternodes.list_format.status > -1)
-          mnItem.status = mnData[settings.masternodes.list_format.status - 1];
+          mnItem.status = mnData['status'];
 
         // last seen
         if (settings.masternodes.list_format.lastseen > -1)
-          mnItem.lastseen = mnData[settings.masternodes.list_format.lastseen - 1];
+          mnItem.lastseen = mnData['lastseen'];
 
         // last paid
         if (settings.masternodes.list_format.lastpaid > -1)
-          mnItem.lastpaid = mnData[settings.masternodes.list_format.lastpaid - 1];
+          mnItem.lastpaid = mnData['lastpaid'];
 
         // active time
         if (settings.masternodes.list_format.activetime > -1)
-          mnItem.activetime = mnData[settings.masternodes.list_format.activetime - 1];
+          mnItem.activetime = mnData['activetime'];
+
+        // network
+        if (settings.masternodes.list_format.network > -1)
+          mnItem.network = mnData['network'];
 
         // IP
         if (settings.masternodes.list_format.ip === 0)
-          mnItem.ip = key.trim().replace(':'+settings.masternodes.default_port, '');
+          mnItem.ip = txhash.trim().replace(':'+settings.masternodes.default_port, '');
         else if (settings.masternodes.list_format.ip > -1)
-          mnItem.ip = mnData[settings.masternodes.list_format.ip - 1].trim().replace(':'+settings.masternodes.default_port, '');
+          mnItem.ip = mnData['ip'].trim().replace(':'+settings.masternodes.default_port, '');
 
         mnList.push(mnItem);
       }
