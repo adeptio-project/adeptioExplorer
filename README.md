@@ -71,30 +71,32 @@ To stop the cluster you can use
 ### SystemD process:
 
 cat /etc/systemd/system/explorer.service
-[Unit]
-Description=npm service
-After=network.target
 
-[Service]
-User=root
-Group=root
-WorkingDirectory=/home/explorer/adeptioExplorer
-ExecStart=/usr/bin/npm start
-TimeoutSec=120
+    [Unit]
+    Description=npm service
+    After=network.target
 
-[Install]
-WantedBy=multi-user.target
+    [Service]
+    User=root
+    Group=root
+    WorkingDirectory=/home/explorer/adeptioExplorer
+    ExecStart=/usr/bin/npm start
+    TimeoutSec=120
+
+    [Install]
+    WantedBy=multi-user.target
 
 ### Check service:
 
 cat check_service.sh 
-#!/usr/bin/env bash
 
-pid=$(pgrep adeptiod)
+    #!/usr/bin/env bash
 
-if [ -z "$pid" ]; then
+    pid=$(pgrep adeptiod)
+
+    if [ -z "$pid" ]; then
 	/usr/bin/adeptiod --daemon
-fi
+    fi
 
 ### Syncing databases with the blockchain
 
