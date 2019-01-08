@@ -98,23 +98,23 @@
   // index page (valid options for difficulty are POW, POS or Hybrid)
   "index": {
     "show_hashrate": true,
-    "difficulty": "POW",
+    "difficulty": "Hybrid",
     "last_txs": 1000
   },
 
   // ensure links on API page are valid
   "api": {
     "blockindex": 1337,
-    "blockhash": "00000000001b8c30360db57b575b3c2bf668b0ed50683f567afd47ae1773efb8",
-    "txhash": "00000c1f5dc95b4c184e2398a782eaf92ce7ed10a99199784a551e7c4de2400d",
-    "address": "0x0000041a18cae812549433c7ccbf1db6a0da33bb91254a451a498219198eeae8"
+    "blockhash": "000000000006887664c5a68c258023c114b67ef357ba879cbb32e531be8e7a82",
+    "txhash": "499c7d78a347c8ab461f1549348b0d41a9c421741e923b77527e6017dda484a8",
+    "address": "Aa2AfyGfM6oWTufhBdMsL8bBTrYcaLerRq"
   },
 
   // market settings
   //supported markets: bittrex, poloniex, yobit, empoex, bleutrade, cryptopia, ccex, coinexchange, crex24
   //default market is loaded by default and determines last price in header
   "markets": {
-    "coin": "ECA",
+    "coin": "ADE",
     "exchange": "BTC",
     "enabled": ["cryptopia"],
     "cryptopia_id": "5909",
@@ -135,8 +135,8 @@
   // high flag: greater than this value flagged red
   "movement": {
     "min_amount": 100,
-    "low_flag": 1000,
-    "high_flag": 5000
+    "low_flag": 10000,
+    "high_flag": 50000
   },
 
   // twitter, facebook, googleplus, bitcointalk, github, slack, website
@@ -185,7 +185,7 @@
   // url (optional) = url to link to for more information
   "labels": {
   "ASpLv9c3UTN6SZXYR29iW46xFGjHRRvPWf": {"label": "adeptio dev team", "type":"success", "url":"https://adeptio.cc"},
-  "ASpLv9c3UTN6SZXYR29iW46xFGjHRRvPWf": {"label": "BurnAddress", "type":"danger", "url":"https://adeptio.cc"}
+  "APxwmBBBBBBBBBBBBBBBBBBBBBBBCywtwz": {"label": "BurnAddress", "type":"danger", "url":"https://github.com/adeptio-project/adeptio#coin-specifications"}
 //  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "treasure","type":"primary"},
 //  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "1/5 init masternode","type":"primary"},
 //  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "2/5 init masternode","type":"primary"},
