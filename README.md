@@ -138,7 +138,7 @@ sync.js (located in scripts/) is used for updating the local databases. This scr
 
 forcesync.sh and forcesynclatest.sh (located in scripts/) can be used to force the explorer to sync at the specified block heights
 
-### Thw Wallet
+### The Wallet
 
 The wallet connected to eXplorer must be running with atleast the following flags:
 
