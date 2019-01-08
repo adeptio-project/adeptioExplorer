@@ -60,7 +60,7 @@ Create user with read/write access:
 
 ### SystemD process:
 
-vim /etc/systemd/system/explorer.service
+    vim /etc/systemd/system/explorer.service
 
     [Unit]
     Description=npm service
@@ -91,9 +91,9 @@ To stop the cluster you can use
 
     sudo systemctl stop explorer
 
-### Check adeptiocore service:
+### Check adeptiocore service if failure & restart:
 
-vim ~/check_adeptiocore_service.sh 
+    vim ~/check_adeptiocore_service.sh 
 
     #!/usr/bin/env bash
 
@@ -102,8 +102,6 @@ vim ~/check_adeptiocore_service.sh
     if [ -z "$pid" ]; then
 	sudo systemctl restart adeptiocore
     fi
-    
-*note: add this to crontab: */15 * * * * ~/check_adeptiocore_service.sh 
 
 ### Syncing databases with the blockchain
 
@@ -128,9 +126,9 @@ sync.js (located in scripts/) is used for updating the local databases. This scr
 
 *It is recommended to have this script launched via a cronjob at 2+ min intervals.*
 
-**crontab**
+**Crontab**
 
-*Example crontab; update index every minute and market data every 2 minutes*
+*Example crontab; update index every 2 minutes and market data every 5 minutes*
 
     */2 * * * * cd ~/adeptioExplorer && /usr/bin/nodejs scripts/sync.js index update > /dev/null 2>&1
     */5 * * * * cd ~/adeptioExplorer && /usr/bin/nodejs scripts/sync.js market > /dev/null 2>&1
@@ -140,7 +138,7 @@ sync.js (located in scripts/) is used for updating the local databases. This scr
 
 forcesync.sh and forcesynclatest.sh (located in scripts/) can be used to force the explorer to sync at the specified block heights
 
-### Wallet
+### Thw Wallet
 
 The wallet connected to eXplorer must be running with atleast the following flags:
 
