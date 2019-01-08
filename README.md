@@ -1,26 +1,25 @@
 Adeptio eXplorer - v2.0.0.0
 ================
 
-The adeptio block explorer with masternode implementation and json parse data
-
-This project is a fork of [Iquidus Explorer](https://github.com/iquidus/explorer) so massive thanks go out to Luke Williams for his code! Thank you!!!
+Adeptio eXplorer base ground [Iquidus Explorer](https://github.com/iquidus/explorer). All other functions and design belongs to adeptio dev team.
 
 ### See it in action
 
 *  [explorer.adeptio.cc](https://explorer.adeptio.cc)
 
-### Requires
+### Requirements
 
-*  node.js >= 0.10.28
+node.js >= 0.10.28
 
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install nodejs make
-*  mongodb 2.6.x
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install nodejs make   
 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 && sudo apt-get update -y && sudo systemctl start mongod
+mongodb 2.6.x
 
-*  adeptiod
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 && sudo apt-get update -y && sudo systemctl start mongod
 
-https://wiki.adeptio.cc/books/adeptio-repository/page/apt-repository-for-ubuntu-1604-1804
+adeptiod
+
+    https://wiki.adeptio.cc/books/adeptio-repository/page/apt-repository-for-ubuntu-1604-1804
 
 ### Create database
 
