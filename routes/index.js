@@ -4,7 +4,10 @@ var express = require('express')
   , locale = require('../lib/locale')
   , db = require('../lib/database')
   , lib = require('../lib/explorer')
-  , qr = require('qr-image');
+  , qr = require('qr-image')
+  , fs = require('fs');
+
+const dns = require('dns')
 
 function route_get_block(res, blockhash) {
   lib.get_block(blockhash, function (block) {
@@ -330,6 +333,97 @@ router.post('/search', function(req, res) {
       }
     });
   }
+});
+
+router.get('/ext/storade_stats', function(req, res) {
+  lib.get_storadelist(function(list) {
+
+    var mnList = [];
+
+    for (var key in list) {
+
+      if (list.hasOwnProperty(key)) {
+        var mnData = list[key]
+        var txhash = mnData['txhash']
+        var mnItem = {
+          address: "",
+          status: "",
+          lastseen: "",
+          lastpaid: null,
+          activetime: "",
+          network: "",
+          ip: ""
+        };
+
+        // Address
+        if (settings.masternodes.list_format.address === 0)
+          mnItem.address = txhash;
+        else if (settings.masternodes.list_format.address > -1)
+          mnItem.address = mnData['addr'];
+
+        // Status
+        if (settings.masternodes.list_format.status > -1)
+          mnItem.status = mnData['status'];
+
+        // last seen
+        if (settings.masternodes.list_format.lastseen > -1)
+          mnItem.lastseen = mnData['lastseen'];
+
+        // last paid
+        if (settings.masternodes.list_format.lastpaid > -1)
+          mnItem.lastpaid = mnData['lastpaid'];
+
+        // active time
+        if (settings.masternodes.list_format.activetime > -1)
+          mnItem.activetime = mnData['activetime'];
+
+        // network
+        if (settings.masternodes.list_format.network > -1)
+          mnItem.network = mnData['network'];
+
+        // IP
+        if (settings.masternodes.list_format.ip === 0)
+          mnItem.ip = txhash.trim().replace(':'+settings.masternodes.default_port, '');
+        else if (settings.masternodes.list_format.ip > -1)
+          mnItem.ip = mnData['ip'].trim().replace(':'+settings.masternodes.default_port, '');
+
+        mnList.push(mnItem);
+      }
+    }
+
+    res.send({ data: mnList });
+  });
+});
+
+router.post('/ext/storade_stats', function(req, res) {
+
+  var client_ip = req.connection.remoteAddress
+
+  dns.lookup('storadestats.adeptio.cc', function(err, result) {
+    var storade_stats_ip = ''
+    console.log(result)
+
+    if(client_ip != storade_stats_ip) {
+      res.send('error');
+      res.end('error');
+      return
+    }
+
+    var json_file = 'myjsonfile.json'
+    var query = req.body.search;
+    //req.params
+    var v = query.length == 64
+    var d = query == settings.genesis_tx
+
+    fs.writeFile(json_file, json_data, 'utf8', callback);
+    //res.redirect('/block/' + settings.genesis_block);
+    //route_get_index(res, locale.ex_search_error + query );
+    //res.send({ data: mnList });
+    //res.send('hello world')
+    //console.log('CB1')
+
+    res.send('success');
+  })
 });
 
 router.get('/qr/:string', function(req, res) {
