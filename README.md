@@ -2,15 +2,17 @@
 
 # Adeptio eXplorer - v2.0.0.0
 
-Adeptio eXplorer base ground [Iquidus Explorer](https://github.com/iquidus/explorer). All other functions and design belongs to adeptio dev team. Integrated zerocoin protocol.
+Adeptio eXplorer base ground [Iquidus Explorer](https://github.com/iquidus/explorer). All other functions and design belongs to [Adeptio Dev Team](https://adeptio.cc). Integrated zerocoin protocol. Fixed Richlist bugs, code consistency and a lot other logic issues.
 
-### See it in action
+### Live preview:
 
 *  [https://explorer.adeptio.cc](https://explorer.adeptio.cc)
 
 ### Requirements
 
 **Ubuntu 16.04 LTS**
+
+    https://www.ubuntu.com/download
 
 **node.js >= 0.10.28**
 
