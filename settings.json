@@ -89,6 +89,7 @@
       "status": 1,
       "lastseen": 5,
       "lastpaid": 7,
+      "network": 8,
       "activetime": 6,
       "ip": 4
     }
