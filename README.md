@@ -1,23 +1,26 @@
-Adeptio eXplorer - v2.0.0.0
-================
+![Alt text](https://explorer.adeptio.cc/images/adeptio.png)
+
+# Adeptio eXplorer - v2.0.0.0
 
 Adeptio eXplorer base ground [Iquidus Explorer](https://github.com/iquidus/explorer). All other functions and design belongs to adeptio dev team.
 
 ### See it in action
 
-*  [explorer.adeptio.cc](https://explorer.adeptio.cc)
+*  [https://explorer.adeptio.cc](https://explorer.adeptio.cc)
 
 ### Requirements
 
-node.js >= 0.10.28
+**Ubuntu 16.04 LTS**
+
+**node.js >= 0.10.28**
 
     curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install nodejs make   
 
-mongodb 2.6.x
+**mongodb 2.6.x**
 
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 && sudo apt-get update -y && sudo systemctl start mongod
 
-adeptiod
+**adeptiod**
 
     https://wiki.adeptio.cc/books/adeptio-repository/page/apt-repository-for-ubuntu-1604-1804
 
@@ -33,7 +36,7 @@ Create databse:
 
 Create user with read/write access:
 
-    > db.createUser( { user: "ciquidus", pwd: "3xp!0reR", roles: [ "readWrite" ] } )
+    > db.createUser( { user: "adeptiouser", pwd: "YourStrong5Pass7Here_", roles: [ "readWrite" ] } )
 
 *note: If you're using mongo shell 2.4.x, use the following to create your user:
 
@@ -49,7 +52,7 @@ Create user with read/write access:
 
 ### Configure
 
-    cp ./settings.json.template ./settings.json
+    vim ./settings.json
 
 *Make required changes in settings.json*
 
