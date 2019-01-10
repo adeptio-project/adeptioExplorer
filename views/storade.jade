@@ -3,8 +3,8 @@ extends layout
 block content   
   script.
     $(document).ready(function(){
-      console.log('masternodes table');
-      var ctable = $('#masternodes-table').dataTable( {
+      console.log('storade table');
+      var ctable = $('#storade-table').dataTable( {
         autoWidth: true,
         searching: true,
         ordering: true,
@@ -33,13 +33,12 @@ block content
           }
         },
         columns: [
-          { data: 'address', width: '20%', className: 'text-left' },
+          { data: 'ip', width: '20%', className: 'text-left' },
           { data: 'status', width: '12%' },
           { data: 'lastseen', width:'12%' },
-          { data: 'lastpaid', width:'12%' },
-          { data: 'activetime', width:'12%' },
-          { data: 'network', width:'6%' },          
-          { data: 'ip', width:'20%' },
+          { data: 'os', width:'12%' },
+          { data: 'python', width:'12%' },
+          { data: 'free_storage', width:'6%' },
         ]
       });
     });
@@ -50,11 +49,10 @@ block content
       table#masternodes-table.table.table-bordered.table-striped
         thead
           tr
-            th #{settings.locale.mn_address}
-            th.text-center #{settings.locale.mn_status}
-            th.text-center #{settings.locale.mn_lastseen}
-            th.text-center #{settings.locale.mn_lastpaid}
-            th.text-center #{settings.locale.mn_activetime}
-            th.text-center #{settings.locale.mn_network}
-            th.text-center #{settings.locale.mn_ip}
+            th #{settings.locale.strd_ip}
+            th.text-center #{settings.locale.strd_status}
+            th.text-center #{settings.locale.strd_lastseen}
+            th.text-center #{settings.locale.strd_os}
+            th.text-center #{settings.locale.strd_python}
+            th.text-center #{settings.locale.strd_free_storage}
         tbody.text-center
