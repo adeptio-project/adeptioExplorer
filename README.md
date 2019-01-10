@@ -20,7 +20,8 @@ Adeptio eXplorer base ground [Iquidus Explorer](https://github.com/iquidus/explo
 
 **mongodb 2.6.x**
 
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 && sudo apt-get update -y && sudo systemctl start mongod
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 && sudo apt-get update -y
+    sudo apt-get install mongodb -y &&  sudo systemctl start mongod
 
 **adeptiod**
 
