@@ -201,6 +201,10 @@ router.get('/masternodes', function(req, res) {
   res.render('masternodes', {active: 'masternodes'});
 });
 
+router.get('/storade', function(req, res) {
+  res.render('storade', {active: 'storade'});
+});
+
 router.get('/ext/masternodeslistfull', function(req, res) {
   lib.get_masternodelist(function(list) {
 
@@ -338,60 +342,50 @@ router.post('/search', function(req, res) {
 router.get('/ext/storade_stats', function(req, res) {
   lib.get_storadelist(function(list) {
 
-    var mnList = [];
+    var strdList = [];
 
     for (var key in list) {
 
       if (list.hasOwnProperty(key)) {
-        var mnData = list[key]
-        var txhash = mnData['txhash']
-        var mnItem = {
-          address: "",
+        var strdData = list[key]
+        var strdItem = {
+          ip: "",
           status: "",
-          lastseen: "",
-          lastpaid: null,
-          activetime: "",
-          network: "",
-          ip: ""
+          lastseen: "not available",
+          os: "not available",
+          python: "not available",
+          free_storage: "not available"
         };
 
-        // Address
-        if (settings.masternodes.list_format.address === 0)
-          mnItem.address = txhash;
-        else if (settings.masternodes.list_format.address > -1)
-          mnItem.address = mnData['addr'];
+        // IP
+        if (settings.storade.list_format.ip > -1)
+          strdItem.ip = strdData['ip'].trim().replace(':'+settings.storade.default_port, '');
 
         // Status
-        if (settings.masternodes.list_format.status > -1)
-          mnItem.status = mnData['status'];
+        if (settings.storade.list_format.status > -1)
+          strdItem.status = strdData['status'];
 
         // last seen
-        if (settings.masternodes.list_format.lastseen > -1)
-          mnItem.lastseen = mnData['lastseen'];
+        if (settings.storade.list_format.lastseen > -1)
+          strdItem.lastseen = strdData['lastseen'];
 
-        // last paid
-        if (settings.masternodes.list_format.lastpaid > -1)
-          mnItem.lastpaid = mnData['lastpaid'];
+        // os
+        if (settings.storade.list_format.os > -1)
+          strdItem.os = strdData['os'];
 
-        // active time
-        if (settings.masternodes.list_format.activetime > -1)
-          mnItem.activetime = mnData['activetime'];
+        // python
+        if (settings.storade.list_format.python > -1)
+          strdItem.python = strdData['python'];
 
-        // network
-        if (settings.masternodes.list_format.network > -1)
-          mnItem.network = mnData['network'];
+        // free_storage
+        if (settings.storade.list_format.free_storage > -1)
+          strdItem.free_storage = strdData['free_storage'];
 
-        // IP
-        if (settings.masternodes.list_format.ip === 0)
-          mnItem.ip = txhash.trim().replace(':'+settings.masternodes.default_port, '');
-        else if (settings.masternodes.list_format.ip > -1)
-          mnItem.ip = mnData['ip'].trim().replace(':'+settings.masternodes.default_port, '');
-
-        mnList.push(mnItem);
+        strdList.push(strdItem);
       }
     }
 
-    res.send({ data: mnList });
+    res.send({ data: strdList });
   });
 });
 
