@@ -351,10 +351,10 @@ router.get('/ext/storade_stats', function(req, res) {
         var strdItem = {
           ip: "",
           status: "",
-          lastseen: "not available",
-          os: "not available",
-          python: "not available",
-          free_storage: "not available"
+          lastseen: "",
+          os: "",
+          python: "",
+          free_storage: ""
         };
 
         // IP
