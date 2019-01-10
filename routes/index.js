@@ -347,8 +347,8 @@ router.get('/ext/storade_stats', function(req, res) {
     try {
         JSON.parse(list);
     } catch (e) {
-        res.end({ data: strdList });
-        
+        res.send({ data: strdList });
+        return
     }
 
     console.log("not JSON");
