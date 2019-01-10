@@ -344,6 +344,10 @@ router.get('/ext/storade_stats', function(req, res) {
 
     var strdList = [];
 
+    console.log( list);
+
+    //res.send({ data: strdList });
+
     for (var key in list) {
 
       if (list.hasOwnProperty(key)) {
