@@ -95,6 +95,24 @@
     }
   },
 
+ // Storade page
+  // default port: Default port a storade is running. 
+  "storade": {
+    "default_port": 9079,
+
+    // Use index-based values (starting with 0).
+    // 0 is the key of the storade list data.
+    // -1 means that the info is not available.
+    "list_format": {
+      "ip": 1,
+      "status": 2,
+      "lastseen": 3,
+      "os": 4,
+      "python": 5,
+      "free_storage": 6
+    }
+  },
+
   // index page (valid options for difficulty are POW, POS or Hybrid)
   "index": {
     "show_hashrate": true,
