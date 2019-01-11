@@ -414,11 +414,10 @@ router.post('/ext/storade_stats', function(req, res) {
     dns.lookup('storadestats.adeptio.cc', function(err, result) {
       lib.check_IP(result, function(storade_stats_ip){
 
-        /*
         if(!storade_stats_ip || client_ip != storade_stats_ip) {
           res.send(error_result);
           return
-        }*/
+        }
 
         data = req.body
 
