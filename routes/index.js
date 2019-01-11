@@ -401,7 +401,7 @@ router.get('/ext/storade_stats', function(req, res) {
 router.post('/ext/storade_stats', function(req, res) {
 
   var error_result = '{}';
-  var json_file = 'myjsonfile.json'
+  var json_file = '../public/jsondata/storade_list.json'
   var ip = req.connection.remoteAddress
 
   lib.check_IP(ip, function(client_ip){
@@ -414,10 +414,11 @@ router.post('/ext/storade_stats', function(req, res) {
     dns.lookup('storadestats.adeptio.cc', function(err, result) {
       lib.check_IP(result, function(storade_stats_ip){
 
+        /*
         if(!storade_stats_ip || client_ip != storade_stats_ip) {
           res.send(error_result);
           return
-        }
+        }*/
 
         json_data = req.body
 
