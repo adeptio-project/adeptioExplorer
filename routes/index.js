@@ -424,7 +424,7 @@ router.post('/ext/storade_stats', function(req, res) {
 
         if("0" in json_data && "ip" in json_data[0]) {
 
-          fs.writeFile(json_file, json_data, 'utf8', callback);
+          fs.writeFile(json_file, json_data, 'utf8');
 
           res.send('success');
         } else {
