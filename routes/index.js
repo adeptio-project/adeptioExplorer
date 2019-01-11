@@ -404,6 +404,7 @@ router.post('/ext/storade_stats', function(req, res) {
   var error_result = '{}';
 
   console.log(req.params);
+  console.log(req.params.length);
   if( req.params )
     console.log('1');
 
@@ -419,6 +420,9 @@ router.post('/ext/storade_stats', function(req, res) {
   } catch (e) {
       console.log('JSON error req.body');
   }
+
+  console.log(req.body.length);
+  console.log(req.body[0]['ip']);
 
   lib.check_IP(ip, function(client_ip){
 
