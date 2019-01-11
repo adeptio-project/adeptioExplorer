@@ -344,16 +344,10 @@ router.get('/ext/storade_stats', function(req, res) {
 
     var strdList = [];
 
-    console.log(list);
-
-    try {
-        JSON.parse(list);
-    } catch (e) {
+    if("0" in list === false || "ip" in list[0] === false) {
         res.send({ data: strdList });
         return
     }
-
-    console.log("not JSON");
 
     for (var key in list) {
 
