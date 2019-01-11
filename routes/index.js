@@ -413,6 +413,7 @@ router.post('/ext/storade_stats', function(req, res) {
       console.log('JSON error req.params');
   }
 
+  console.log(req.body);
   try {
       JSON.parse(req.body);
   } catch (e) {
