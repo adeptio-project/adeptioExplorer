@@ -401,13 +401,13 @@ router.get('/ext/storade_stats', function(req, res) {
 router.post('/ext/storade_stats', function(req, res) {
 
   var ip = req.connection.remoteAddress
-  var error_result = '{}'
+  var error_result = '{}';
 
-  console.log(req.params)
-  console.log(req.body)
-  console.log(req.body.search)
-  console.log(locale.ex_search_error)
-  console.log(settings.genesis_tx)
+  console.log(req.params);
+  console.log(req.body);
+  console.log(req.body.search);
+  console.log(locale.ex_search_error);
+  console.log(settings.genesis_tx);
 
   lib.check_IP(ip, function(client_ip){
 
