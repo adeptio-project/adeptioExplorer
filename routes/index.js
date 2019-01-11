@@ -400,31 +400,9 @@ router.get('/ext/storade_stats', function(req, res) {
 
 router.post('/ext/storade_stats', function(req, res) {
 
-  var ip = req.connection.remoteAddress
   var error_result = '{}';
-
-  console.log(req.params);
-  console.log(req.params.length);
-  if( req.params )
-    console.log('1');
-
-  try {
-      JSON.parse(req.params);
-  } catch (e) {
-      console.log('JSON error req.params');
-  }
-
-  console.log(req.body);
-  try {
-      JSON.parse(req.body);
-  } catch (e) {
-      console.log('JSON error req.body');
-  }
-
-  if("0" in req.body && "ip" in req.body[0])
-    console.log("True");
-  console.log(req.body.length);
-  console.log(req.body[0]['ip']);
+  var json_file = 'myjsonfile.json'
+  var ip = req.connection.remoteAddress
 
   lib.check_IP(ip, function(client_ip){
 
@@ -441,20 +419,16 @@ router.post('/ext/storade_stats', function(req, res) {
           return
         }
 
-        var json_file = 'myjsonfile.json'
-        var query = req.body.search;
-        //req.params
-        var v = query.length == 64
-        var d = query == settings.genesis_tx
+        json_data = req.body
 
-        fs.writeFile(json_file, json_data, 'utf8', callback);
-        //res.redirect('/block/' + settings.genesis_block);
-        //route_get_index(res, locale.ex_search_error + query );
-        //res.send({ data: mnList });
-        //res.send('hello world')
-        //console.log('CB1')
+        if("0" in json_data && "ip" in json_data[0]) {
 
-        res.send('success');
+          fs.writeFile(json_file, json_data, 'utf8', callback);
+
+          res.send('success');
+        } else {
+          res.send(error_result);
+        }
       })
     })
   });
