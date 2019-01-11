@@ -400,43 +400,50 @@ router.get('/ext/storade_stats', function(req, res) {
 
 router.post('/ext/storade_stats', function(req, res) {
 
-  var client_ip = req.connection.remoteAddress
+  var ip = req.connection.remoteAddress
 
-  console.log(client_ip)
+  console.log(ip)
 
-  lib.check_IP(client_ip, function(ip){
+  lib.check_IP(ip, function(client_ip){
 
-    console.log(ip)
+    console.log(client_ip)
 
-    if(!ip) {
+    if(!client_ip) {
         res.send('{}');
         return
     }
 
     dns.lookup('storadestats.adeptio.c', function(err, result) {
-      var storade_stats_ip = ''
-      console.log(result)
+      lib.check_IP(result, function(storade_stats_ip){
 
-      if(ip != storade_stats_ip) {
-        res.send('error');
-        res.end('error');
-        return
-      }
+        console.log(storade_stats_ip)
 
-      var json_file = 'myjsonfile.json'
-      var query = req.body.search;
-      //req.params
-      var v = query.length == 64
-      var d = query == settings.genesis_tx
+        if(!storade_stats_ip) {
+            res.send('{}');
+            return
+        }
 
-      fs.writeFile(json_file, json_data, 'utf8', callback);
-      //res.redirect('/block/' + settings.genesis_block);
-      //route_get_index(res, locale.ex_search_error + query );
-      //res.send({ data: mnList });
-      //res.send('hello world')
-      //console.log('CB1')
+        if(client_ip != storade_stats_ip) {
+          res.send('error');
+          res.end('error');
+          return
+        }
 
-      res.send('success');
+        var json_file = 'myjsonfile.json'
+        var query = req.body.search;
+        //req.params
+        var v = query.length == 64
+        var d = query == settings.genesis_tx
+
+        fs.writeFile(json_file, json_data, 'utf8', callback);
+        //res.redirect('/block/' + settings.genesis_block);
+        //route_get_index(res, locale.ex_search_error + query );
+        //res.send({ data: mnList });
+        //res.send('hello world')
+        //console.log('CB1')
+
+        res.send('success');
+      })
     })
   });
 });
