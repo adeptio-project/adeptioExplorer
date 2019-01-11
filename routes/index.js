@@ -403,6 +403,8 @@ router.post('/ext/storade_stats', function(req, res) {
 
   var client_ip = req.connection.remoteAddress
 
+  console.log(client_ip)
+
   if (ipaddr.IPv4.isValid(client_ip)) {
     client_ip = ipaddr.ipString()
     // ipaddr.ipString() is IPv4
