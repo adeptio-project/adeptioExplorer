@@ -404,10 +404,20 @@ router.post('/ext/storade_stats', function(req, res) {
   var error_result = '{}';
 
   console.log(req.params);
-  console.log(req.body);
-  console.log(req.body.search);
-  console.log(locale.ex_search_error);
-  console.log(settings.genesis_tx);
+  if( req.params )
+    console.log('1');
+
+  try {
+      JSON.parse(req.params);
+  } catch (e) {
+      console.log('JSON error req.params');
+  }
+
+  try {
+      JSON.parse(req.body);
+  } catch (e) {
+      console.log('JSON error req.body');
+  }
 
   lib.check_IP(ip, function(client_ip){
 
