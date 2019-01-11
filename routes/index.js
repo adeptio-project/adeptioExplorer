@@ -363,27 +363,27 @@ router.get('/ext/storade_stats', function(req, res) {
         };
 
         // IP
-        if (settings.storade.list_format.ip > -1)
+        if ("ip" in strdData && settings.storade.list_format.ip > -1)
           strdItem.ip = strdData['ip'];
 
         // Status
-        if (settings.storade.list_format.status > -1)
+        if ("status" in strdData && settings.storade.list_format.status > -1)
           strdItem.status = strdData['status'];
 
         // last seen
-        if (settings.storade.list_format.lastseen > -1)
+        if ("lastseen" in strdData && settings.storade.list_format.lastseen > -1)
           strdItem.lastseen = strdData['lastseen'];
 
         // os
-        if (settings.storade.list_format.os > -1)
+        if ("os" in strdData && settings.storade.list_format.os > -1)
           strdItem.os = strdData['os'];
 
         // python
-        if (settings.storade.list_format.python > -1)
+        if ("python" in strdData && settings.storade.list_format.python > -1)
           strdItem.python = strdData['python'];
 
         // free_storage
-        if (settings.storade.list_format.free_storage > -1)
+        if ("free_storage" in strdData && settings.storade.list_format.free_storage > -1)
           strdItem.free_storage = strdData['free_storage'];
 
         strdList.push(strdItem);
