@@ -364,7 +364,7 @@ router.get('/ext/storade_stats', function(req, res) {
 
         // IP
         if (settings.storade.list_format.ip > -1)
-          strdItem.ip = strdData['ip'].trim().replace(':'+settings.storade.default_port, '');
+          strdItem.ip = strdData['ip'];
 
         // Status
         if (settings.storade.list_format.status > -1)
