@@ -344,7 +344,7 @@ router.get('/ext/storade_stats', function(req, res) {
 
     var strdList = [];
 
-    if("0" in list === false || "ip" in list[0] === false) {
+    if(typeof list !== 'object' && ("0" in list === false || "ip" in list[0] === false)) {
         res.send({ data: strdList });
         return
     }
