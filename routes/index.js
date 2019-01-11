@@ -406,19 +406,19 @@ router.post('/ext/storade_stats', function(req, res) {
   console.log(client_ip)
 
   if (ipaddr.IPv4.isValid(client_ip)) {
-    client_ip = ipaddr.ipString()
+    client_ip = ipaddr.toString()
     // ipaddr.ipString() is IPv4
   } else if (ipaddr.IPv6.isValid(client_ip)) {
     var ip = ipaddr.IPv6.parse(client_ip);
     if (ip.isIPv4MappedAddress()) {
-      client_ip = ipaddr.ipString()
+      client_ip = ipaddr.toString()
       // ip.toIPv4Address().toString() is IPv4
     } else {
       // ipString is IPv6
-      client_ip = ipaddr.ipString()
+      client_ip = ipaddr.toString()
     }
   } else {
-    client_ip = ipaddr.ipString()
+    client_ip = ipaddr.toString()
     // ipString is invalid
   }
 
