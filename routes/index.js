@@ -5,7 +5,8 @@ var express = require('express')
   , db = require('../lib/database')
   , lib = require('../lib/explorer')
   , qr = require('qr-image')
-  , fs = require('fs');
+  , fs = require('fs'),
+  , ipaddr = require('ipaddr.js');
 
 const dns = require('dns')
 
@@ -401,6 +402,23 @@ router.get('/ext/storade_stats', function(req, res) {
 router.post('/ext/storade_stats', function(req, res) {
 
   var client_ip = req.connection.remoteAddress
+
+  if (ipaddr.IPv4.isValid(client_ip)) {
+    client_ip = ipaddr.ipString()
+    // ipaddr.ipString() is IPv4
+  } else if (ipaddr.IPv6.isValid(client_ip)) {
+    var ip = ipaddr.IPv6.parse(client_ip);
+    if (ip.isIPv4MappedAddress()) {
+      client_ip = ipaddr.ipString()
+      // ip.toIPv4Address().toString() is IPv4
+    } else {
+      // ipString is IPv6
+      client_ip = ipaddr.ipString()
+    }
+  } else {
+    client_ip = ipaddr.ipString()
+    // ipString is invalid
+  }
 
   console.log(client_ip)
 
