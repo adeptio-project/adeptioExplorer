@@ -400,11 +400,9 @@ router.get('/ext/storade_stats', function(req, res) {
 
 router.post('/ext/storade_stats', function(req, res) {
 
-  console.log(req)
-
-  console.log(res)
-
   var client_ip = req.connection.remoteAddress
+
+  console.log(client_ip)
 
   dns.lookup('storadestats.adeptio.cc', function(err, result) {
     var storade_stats_ip = ''
