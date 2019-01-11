@@ -428,7 +428,7 @@ router.post('/ext/storade_stats', function(req, res) {
           res.send(error_result);
         }
       })
-    })
+    });
   });
 });
 
