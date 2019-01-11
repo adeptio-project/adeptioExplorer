@@ -413,7 +413,7 @@ router.post('/ext/storade_stats', function(req, res) {
         return
     }
 
-    dns.lookup('storadestats.adeptio.c', function(err, result) {
+    dns.lookup('storadestats.adeptio.cc', function(err, result) {
       lib.check_IP(result, function(storade_stats_ip){
 
         console.log(storade_stats_ip)
