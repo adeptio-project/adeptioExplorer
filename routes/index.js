@@ -401,7 +401,7 @@ router.get('/ext/storade_stats', function(req, res) {
 router.post('/ext/storade_stats', function(req, res) {
 
   var error_result = '{}';
-  var json_file = '../public/jsondata/storade_list.json'
+  var json_file = 'storade_list.json'
   var ip = req.connection.remoteAddress
 
   lib.check_IP(ip, function(client_ip){
@@ -424,7 +424,9 @@ router.post('/ext/storade_stats', function(req, res) {
 
         if("0" in json_data && "ip" in json_data[0]) {
 
-          fs.writeFile(json_file, json_data, 'utf8');
+          var callback;
+
+          fs.writeFile(json_file, json_data, 'utf8', callback);
 
           res.send('success');
         } else {
