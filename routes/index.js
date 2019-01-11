@@ -5,7 +5,7 @@ var express = require('express')
   , db = require('../lib/database')
   , lib = require('../lib/explorer')
   , qr = require('qr-image')
-  , fs = require('fs'),
+  , fs = require('fs')
   , ipaddr = require('ipaddr.js');
 
 const dns = require('dns')
