@@ -421,6 +421,8 @@ router.post('/ext/storade_stats', function(req, res) {
       console.log('JSON error req.body');
   }
 
+  if("0" in req.body && "ip" in req.body[0])
+    console.log("True");
   console.log(req.body.length);
   console.log(req.body[0]['ip']);
 
