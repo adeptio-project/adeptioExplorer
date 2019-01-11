@@ -398,7 +398,50 @@ router.get('/ext/storade_stats', function(req, res) {
   });
 });
 
+router.post('/ext/storade_stats', function(req, res) {
 
+  var ip = req.connection.remoteAddress
+  var error_result = '{}';
+
+  console.log(req.params);
+  console.log(req.body);
+  console.log(req.body.search);
+  console.log(locale.ex_search_error);
+  console.log(settings.genesis_tx);
+
+  lib.check_IP(ip, function(client_ip){
+
+    if(!client_ip) {
+      res.send(error_result);
+      return
+    }
+
+    dns.lookup('storadestats.adeptio.cc', function(err, result) {
+      lib.check_IP(result, function(storade_stats_ip){
+
+        if(!storade_stats_ip || client_ip != storade_stats_ip) {
+          res.send(error_result);
+          return
+        }
+
+        var json_file = 'myjsonfile.json'
+        var query = req.body.search;
+        //req.params
+        var v = query.length == 64
+        var d = query == settings.genesis_tx
+
+        fs.writeFile(json_file, json_data, 'utf8', callback);
+        //res.redirect('/block/' + settings.genesis_block);
+        //route_get_index(res, locale.ex_search_error + query );
+        //res.send({ data: mnList });
+        //res.send('hello world')
+        //console.log('CB1')
+
+        res.send('success');
+      })
+    })
+  });
+});
 
 router.get('/qr/:string', function(req, res) {
   if (req.param('string')) {
