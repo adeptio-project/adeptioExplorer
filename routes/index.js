@@ -5,8 +5,7 @@ var express = require('express')
   , db = require('../lib/database')
   , lib = require('../lib/explorer')
   , qr = require('qr-image')
-  , fs = require('fs')
-  , ipaddr = require('ipaddr.js');
+  , fs = require('fs');
 
 const dns = require('dns')
 
@@ -405,50 +404,41 @@ router.post('/ext/storade_stats', function(req, res) {
 
   console.log(client_ip)
 
-  if (ipaddr.IPv4.isValid(client_ip)) {
-    client_ip = ipaddr.toString()
-    // ipaddr.ipString() is IPv4
-  } else if (ipaddr.IPv6.isValid(client_ip)) {
-    var ip = ipaddr.IPv6.parse(client_ip);
-    if (ip.isIPv4MappedAddress()) {
-      client_ip = ipaddr.toString()
-      // ip.toIPv4Address().toString() is IPv4
-    } else {
-      // ipString is IPv6
-      client_ip = ipaddr.toString()
-    }
-  } else {
-    client_ip = ipaddr.toString()
-    // ipString is invalid
-  }
+  lib.check_IP(client_ip, function(ip){
 
-  console.log(client_ip)
+    console.log(ip)
 
-  dns.lookup('storadestats.adeptio.cc', function(err, result) {
-    var storade_stats_ip = ''
-    console.log(result)
-
-    if(client_ip != storade_stats_ip) {
-      res.send('error');
-      res.end('error');
-      return
+    if(!ip) {
+        res.send('{}');
+        return
     }
 
-    var json_file = 'myjsonfile.json'
-    var query = req.body.search;
-    //req.params
-    var v = query.length == 64
-    var d = query == settings.genesis_tx
+    dns.lookup('storadestats.adeptio.c', function(err, result) {
+      var storade_stats_ip = ''
+      console.log(result)
 
-    fs.writeFile(json_file, json_data, 'utf8', callback);
-    //res.redirect('/block/' + settings.genesis_block);
-    //route_get_index(res, locale.ex_search_error + query );
-    //res.send({ data: mnList });
-    //res.send('hello world')
-    //console.log('CB1')
+      if(ip != storade_stats_ip) {
+        res.send('error');
+        res.end('error');
+        return
+      }
 
-    res.send('success');
-  })
+      var json_file = 'myjsonfile.json'
+      var query = req.body.search;
+      //req.params
+      var v = query.length == 64
+      var d = query == settings.genesis_tx
+
+      fs.writeFile(json_file, json_data, 'utf8', callback);
+      //res.redirect('/block/' + settings.genesis_block);
+      //route_get_index(res, locale.ex_search_error + query );
+      //res.send({ data: mnList });
+      //res.send('hello world')
+      //console.log('CB1')
+
+      res.send('success');
+    })
+  });
 });
 
 router.get('/qr/:string', function(req, res) {
