@@ -72,7 +72,9 @@
     "github": false,
     "search": true,
     "movement": true,
-    "network": true
+    "network": true,
+    "masternodes": true,
+    "storade": false
   },
 
  // Masternodes page
