@@ -16,7 +16,7 @@ Adeptio eXplorer base ground [Iquidus Explorer](https://github.com/iquidus/explo
 
 **node.js >= 0.10.28**
 
-    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install nodejs make   
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install nodejs make libkrb5-dev -y
 
 **mongodb 2.6.x**
 
