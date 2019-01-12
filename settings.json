@@ -73,7 +73,8 @@
     "search": true,
     "movement": true,
     "network": true,
-    "masternodes": true
+    "masternodes": true,
+    "storade": false
   },
 
  // Masternodes page
