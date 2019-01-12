@@ -415,8 +415,12 @@ router.post('/ext/storade_stats', function(req, res) {
       return
     }
 
+    console.log(client_ip)
+
     dns.lookup(storade_stats_domain, function(err, result) {
       lib.check_IP(result, function(storade_stats_ip){
+
+        console.log(storade_stats_ip)
 
         if(!storade_stats_ip || client_ip != storade_stats_ip) {
           res.send(error_result);
