@@ -367,12 +367,12 @@ router.get('/ext/storade_stats', function(req, res) {
           strdItem.ip = strdData['ip'];
 
         // Status
-        if ("status" in strdData && settings.storade.list_format.status > -1)
-          strdItem.status = strdData['status'];
+        if ("error" in strdData && settings.storade.list_format.status > -1)
+          strdItem.status = strdData['error'];
 
         // last seen
-        if ("lastseen" in strdData && settings.storade.list_format.lastseen > -1)
-          strdItem.lastseen = strdData['lastseen'];
+        if ("date" in strdData && settings.storade.list_format.lastseen > -1)
+          strdItem.lastseen = strdData['date'];
 
         // os
         if ("os" in strdData && settings.storade.list_format.os > -1)
