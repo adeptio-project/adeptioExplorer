@@ -4,7 +4,10 @@ var express = require('express')
   , locale = require('../lib/locale')
   , db = require('../lib/database')
   , lib = require('../lib/explorer')
-  , qr = require('qr-image');
+  , qr = require('qr-image')
+  , fs = require('fs');
+
+const dns = require('dns')
 
 function route_get_block(res, blockhash) {
   lib.get_block(blockhash, function (block) {
@@ -198,6 +201,10 @@ router.get('/masternodes', function(req, res) {
   res.render('masternodes', {active: 'masternodes'});
 });
 
+router.get('/storade', function(req, res) {
+  res.render('storade', {active: 'storade'});
+});
+
 router.get('/ext/masternodeslistfull', function(req, res) {
   lib.get_masternodelist(function(list) {
 
@@ -330,6 +337,99 @@ router.post('/search', function(req, res) {
       }
     });
   }
+});
+
+router.get('/ext/storade_stats', function(req, res) {
+  lib.get_storadelist(function(list) {
+
+    var strdList = [];
+
+    if(typeof list !== 'object' || "0" in list === false || "ip" in list[0] === false) {
+        res.send({ data: strdList });
+        return
+    }
+
+    for (var key in list) {
+
+      if (list.hasOwnProperty(key)) {
+        var strdData = list[key]
+        var strdItem = {
+          ip: "",
+          status: "",
+          lastseen: "",
+          os: "",
+          python: "",
+          free_storage: ""
+        };
+
+        // IP
+        if ("ip" in strdData && settings.storade.list_format.ip > -1)
+          strdItem.ip = strdData['ip'];
+
+        // Status
+        if ("error" in strdData && settings.storade.list_format.status > -1)
+          strdItem.status = strdData['error'];
+
+        // last seen
+        if ("date" in strdData && settings.storade.list_format.lastseen > -1)
+          strdItem.lastseen = strdData['date'];
+
+        // os
+        if ("os" in strdData && settings.storade.list_format.os > -1)
+          strdItem.os = strdData['os'];
+
+        // python
+        if ("python" in strdData && settings.storade.list_format.python > -1)
+          strdItem.python = strdData['python'];
+
+        // free_storage
+        if ("free_storage" in strdData && settings.storade.list_format.free_storage > -1)
+          strdItem.free_storage = strdData['free_storage'];
+
+        strdList.push(strdItem);
+      }
+    }
+
+    res.send({ data: strdList });
+  });
+});
+
+router.post('/ext/storade_stats', function(req, res) {
+
+  var error_result = '{}';
+  var success_result = 'success';
+  var storade_stats_domain = 'storadestats.adeptio.cc'
+  var json_file = 'public/jsondata/storade_list.json'
+  var ip = req.connection.remoteAddress
+
+  lib.check_IP(ip, function(client_ip){
+
+    if(!client_ip) {
+      res.send(error_result);
+      return
+    }
+
+    dns.lookup(storade_stats_domain, function(err, result) {
+      lib.check_IP(result, function(storade_stats_ip){
+
+        if(!storade_stats_ip || client_ip != storade_stats_ip) {
+          res.send(error_result);
+          return
+        }
+
+        data = req.body
+
+        if("0" in data && "ip" in data[0]) {
+
+          fs.writeFile(json_file, JSON.stringify(data), 'utf8', (error) => {});
+
+          res.send(success_result);
+        } else {
+          res.send(error_result);
+        }
+      })
+    });
+  });
 });
 
 router.get('/qr/:string', function(req, res) {

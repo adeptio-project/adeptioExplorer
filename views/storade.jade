@@ -1,0 +1,49 @@
+extends layout
+
+block content   
+  script.
+    $(document).ready(function(){
+      console.log('storade table');
+      var ctable = $('#storade-table').dataTable( {
+        autoWidth: true,
+        searching: true,
+        ordering: true,
+        responsive: true,
+        lengthChange: true,
+        processing: false,
+        bPaginate: true,
+        pageLength: 25,
+        order: [[ 3, "desc" ]],
+        ajax: {
+          url: '/ext/storade_stats',
+          dataSrc: function ( json ) {
+            for ( var i=0;i<json.data.length; i++ ) {
+              json.data[i]['lastseen'] = new Date((json.data[i]['lastseen']) * 1000).toLocaleString(); 
+            }
+            return json.data;
+          }
+        },
+        columns: [
+          { data: 'ip', width: '20%', className: 'text-left' },
+          { data: 'status', width: '12%' },
+          { data: 'lastseen', width:'12%' },
+          { data: 'os', width:'12%' },
+          { data: 'python', width:'12%' },
+          { data: 'free_storage', width:'6%' },
+        ]
+      });
+    });
+  .col-md-12(style="margin-bottom: 4%")
+    .panel.panel-default
+      .panel-heading
+        strong #{settings.locale.strd}
+      table#storade-table.table.table-bordered.table-striped
+        thead
+          tr
+            th #{settings.locale.strd_ip}
+            th.text-center #{settings.locale.strd_status}
+            th.text-center #{settings.locale.strd_lastseen}
+            th.text-center #{settings.locale.strd_os}
+            th.text-center #{settings.locale.strd_python}
+            th.text-center #{settings.locale.strd_free_storage}
+        tbody.text-center

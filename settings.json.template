@@ -5,18 +5,18 @@
 */
 {
   // name your instance!
-  "title": "Adeptio eXplorer",
+  "title": "CIQUIDUS",
 
   "address": "127.0.0.1:3001",
 
   // coin name
-  "coin": "Adeptio eXplorer",
+  "coin": "Chaincoin",
 
   // coin symbol
-  "symbol": "ADE",
+  "symbol": "CHC",
 
   // logo
-  "logo": "/images/adeptio_icon128.png",
+  "logo": "/images/chain_dark-128x128.png",
 
   // favicon
   "favicon": "public/favicon.ico",
@@ -24,19 +24,19 @@
   // Uses bootswatch themes (http://bootswatch.com/)
   // Valid options:
   //     Cerulean, Cosmo, Cyborg, Darkly, Flatly, Journal, Lumen, Paper,
-  //     Readable, Sandstone, Simplex, Slate, Spacelab, Superhero, United, Yeti \\ Spacelab
+  //     Readable, Sandstone, Simplex, Slate, Spacelab, Superhero, United, Yeti
   // theme (see /public/themes for available themes)
-  "theme": "Readable",
+  "theme": "Slate",
 
   // port to listen for requests on.
   "port" : 3001,
 
   // database settings (MongoDB)
   "dbsettings": {
-    "user": "",
-    "password": "",
-    "database": "",
-    "address": "",
+    "user": "ciquidus",
+    "password": "3xp!0reR",
+    "database": "explorerdb",
+    "address": "localhost",
     "port": 27017
   },
 
@@ -47,13 +47,13 @@
   // wallet settings
   "wallet": {
     "host": "localhost",
-    "port": 9078,
-    "user": "adeptiorpc",
-    "pass": "xxx"
+    "port": 11995,
+    "user": "chaincoinrpc",
+    "pass": "123gfjk3R3pCCVjHtbRde2s5kzdf233sa"
   },
 
   // confirmations
-  "confirmations": 100,
+  "confirmations": 40,
 
   // language settings
   "locale": "locale/en.json",
@@ -61,15 +61,15 @@
   // menu settings
   "display": {
     "api": true,
-    "markets": false,
+    "markets": true,
     "richlist": true,
     "twitter": true,
-    "facebook": true,
+    "facebook": false,
     "googleplus": false,
-    "bitcointalk": true,
-    "website": true,
-    "slack": true,
-    "github": true,
+    "bitcointalk": false,
+    "website": false,
+    "slack": false,
+    "github": false,
     "search": true,
     "movement": true,
     "network": true,
@@ -117,26 +117,26 @@
   // index page (valid options for difficulty are POW, POS or Hybrid)
   "index": {
     "show_hashrate": true,
-    "difficulty": "Hybrid",
-    "last_txs": 1000
+    "difficulty": "POW",
+    "last_txs": 100
   },
 
   // ensure links on API page are valid
   "api": {
     "blockindex": 1337,
-    "blockhash": "000000000006887664c5a68c258023c114b67ef357ba879cbb32e531be8e7a82",
-    "txhash": "499c7d78a347c8ab461f1549348b0d41a9c421741e923b77527e6017dda484a8",
-    "address": "Aa2AfyGfM6oWTufhBdMsL8bBTrYcaLerRq"
+    "blockhash": "00000000001b8c30360db57b575b3c2bf668b0ed50683f567afd47ae1773efb8",
+    "txhash": "285feead54e322aa69f649c4078766171df358a12f5f1517d61f303780e25511",
+    "address": "CaxX1HVWzbQ516w61XbtHR63vNmp2mvLMZ"
   },
 
   // market settings
-  //supported markets: bittrex, poloniex, yobit, empoex, bleutrade, cryptopia, ccex, coinexchange, crex24
+  //supported markets: bittrex, poloniex, yobit, empoex, bleutrade, cryptopia, ccex, coinexchange
   //default market is loaded by default and determines last price in header
   "markets": {
-    "coin": "ADE",
+    "coin": "CHC",
     "exchange": "BTC",
     "enabled": ["cryptopia"],
-    "cryptopia_id": "5909",
+    "cryptopia_id": "2186",
     "ccex_key" : "Get-Your-Own-Key",
     "coinexchange_id": "18",
     "default": "cryptopia"
@@ -154,28 +154,28 @@
   // high flag: greater than this value flagged red
   "movement": {
     "min_amount": 100,
-    "low_flag": 10000,
-    "high_flag": 50000
+    "low_flag": 1000,
+    "high_flag": 5000
   },
 
   // twitter, facebook, googleplus, bitcointalk, github, slack, website
-  "twitter": "adeptioproject",
-  "facebook": "AdeptioProject-1637877816511858",
-  "googleplus": "",
-  "bitcointalk": "4368475.0",
-  "github": "adeptio-project/adeptio",
-  "slack": "https://discord.gg/RBXjTBa",
-  "website": "https://adeptio.cc",
+  "twitter": "suprnurd",
+  "facebook": "yourfacebookpage",
+  "googleplus": "yourgooglepluspage",
+  "bitcointalk": "yourbitcointalktopicvalue",
+  "github": "yourgithubusername/yourgithubrepo",
+  "slack": "yourfullslackinviteurl",
+  "website": "yourfullwebsiteurl",
 
   //genesis
-  "genesis_tx": "00000c1f5dc95b4c184e2398a782eaf92ce7ed10a99199784a551e7c4de2400d",
-  "genesis_block": "0x0000041a18cae812549433c7ccbf1db6a0da33bb91254a451a498219198eeae8",
+  "genesis_tx": "fa6ef9872494fa9662cf0fecf8c0135a6932e76d7a8764e1155207f3205c7c88",
+  "genesis_block": "00000f639db5734b2b861ef8dbccc33aebd7de44d13de000a12d093bcc866c64",
 
   //heavy (enable/disable additional heavy features)
   "heavy": false,
 
   //amount of txs to index per address (stores latest n txs)
-  "txcount": 1000,
+  "txcount": 100,
 
   //show total sent & received on address page (set false if PoS)
   "show_sent_received": true,
@@ -203,13 +203,7 @@
   // type (optional) = class of label, valid types: default, primary, warning, danger, success
   // url (optional) = url to link to for more information
   "labels": {
-  "ASpLv9c3UTN6SZXYR29iW46xFGjHRRvPWf": {"label": "adeptio dev team", "type":"success", "url":"https://adeptio.cc"},
-  "APxwmBBBBBBBBBBBBBBBBBBBBBBBCywtwz": {"label": "BurnAddress", "type":"danger", "url":"https://github.com/adeptio-project/adeptio#coin-specifications"}
-//  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "treasure","type":"primary"},
-//  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "1/5 init masternode","type":"primary"},
-//  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "2/5 init masternode","type":"primary"},
-//  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "3/5 init masternode","type":"primary"},
-//  "AZHrf4zUwoLyF1bAjGiR4jELC8nohLe1gM": {"label": "4/5 init masternode","type":"primary"},
-//  "AP4FBQdztKJJQMQYmvz5U9KGgf128BfwZu": {"label": "5/5 init masternode","type":"primary"}
+  //  "CLkWg5YSLod772uLzsFRxHgHiWVGAJSezm": {"label": "Donation Address", "type":"primary", "url":"http://example.com"},
+  //  "CaxX1HVWzbQ516w61XbtHR63vNmp2mvLMZ": {"label": "Max Lee War Chest"}
   }
 }
