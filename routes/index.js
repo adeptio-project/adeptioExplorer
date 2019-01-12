@@ -402,6 +402,10 @@ router.post('/ext/storade_stats', function(req, res) {
   var json_file = 'public/jsondata/storade_list.json'
   var ip = req.connection.remoteAddress
 
+  console.log(req.headers)
+
+  console.log(req.body)
+
   lib.check_IP(ip, function(client_ip){
 
     if(!client_ip) {
