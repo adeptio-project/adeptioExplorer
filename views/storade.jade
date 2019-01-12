@@ -18,16 +18,7 @@ block content
           url: '/ext/storade_stats',
           dataSrc: function ( json ) {
             for ( var i=0;i<json.data.length; i++ ) {
-              json.data[i]['address'] = "<a href='/address/" + json.data[i]['address'] + "'>" + json.data[i]['address'] + "</a>";
-              json.data[i]['lastseen'] = new Date((json.data[i]['lastseen']) * 1000).toLocaleString();
-              if (json.data[i]['lastpaid']> 0) 
-                json.data[i]['lastpaid'] = secToHoursMinSecString((Date.now()/1000) - json.data[i]['lastpaid']);
-              else
-                json.data[i]['lastpaid'] = '<em>not available</em>'; 
-              if (json.data[i]['activetime']> 0)
-                json.data[i]['activetime'] = formatMilliseconds(json.data[i]['activetime']);
-              else
-                json.data[i]['activetime'] = '<em>not available</em>';   
+              json.data[i]['lastseen'] = new Date((json.data[i]['lastseen']) * 1000).toLocaleString(); 
             }
             return json.data;
           }
@@ -45,8 +36,8 @@ block content
   .col-md-12(style="margin-bottom: 4%")
     .panel.panel-default
       .panel-heading
-        strong #{settings.locale.net_connections}
-      table#masternodes-table.table.table-bordered.table-striped
+        strong #{settings.locale.strd}
+      table#storade-table.table.table-bordered.table-striped
         thead
           tr
             th #{settings.locale.strd_ip}
