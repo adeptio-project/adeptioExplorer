@@ -130,6 +130,11 @@ html
                 a.navbar-link.loading(href='/masternodes')
                   span.fa.fa-server
                   span.menu-text #{settings.locale.menu_masternodes}
+            if settings.display.storade == true
+              li#storade
+                a.navbar-link.loading(href='/storade')
+                  span.fa.fa-server
+                  span.menu-text #{settings.locale.menu_storade}
             if settings.display.api == true
               li#info
                 a.navbar-link(href='/info')
