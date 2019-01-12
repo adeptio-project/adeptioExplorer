@@ -406,6 +406,12 @@ router.post('/ext/storade_stats', function(req, res) {
   else
     var ip = req.connection.remoteAddress
 
+  console.log(ip)
+
+  console.log(req.headers)
+
+  console.log(req.body)
+
   lib.check_IP(ip, function(client_ip){
 
     if(!client_ip) {
