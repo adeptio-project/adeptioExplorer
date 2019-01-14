@@ -118,7 +118,8 @@
   "index": {
     "show_hashrate": true,
     "difficulty": "POW",
-    "last_txs": 100
+    "last_txs": 100,
+    "last_blocks": 100
   },
 
   // ensure links on API page are valid
