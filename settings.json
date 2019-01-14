@@ -74,7 +74,7 @@
     "movement": true,
     "network": true,
     "masternodes": true,
-    "storade": false
+    "storade": true
   },
 
  // Masternodes page
@@ -118,7 +118,8 @@
   "index": {
     "show_hashrate": true,
     "difficulty": "POW",
-    "last_txs": 1000
+    "last_txs": 100,
+    "last_blocks": 100
   },
 
   // ensure links on API page are valid
