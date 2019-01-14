@@ -23,19 +23,13 @@
         
         var days = Math.trunc(s);
 
-        if (ms<100) ms="0"+ms;
-        if (secs<10) secs="0"+secs;
-        if (mins<10) mins="0"+mins;
-        if (hrs<10) hrs="0"+hrs;
-        if (days<10) days="0"+days;
-
-        if (days!="00")
+        if (days!="0")
             return days + " days";
-        else if (hrs!="00")
+        else if (hrs!="0")
             return hrs + ' hours';
-        else if (mins!="00")
+        else if (mins!="0")
             return mins + ' min';
-        else if (secs!="00")
+        else if (secs!="0")
             return secs + ' sec';
         else
             return ms + ' ms';
