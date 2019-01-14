@@ -13,7 +13,7 @@ This project is a fork of [Iquidus Explorer](https://github.com/iquidus/explorer
 
 *  node.js >= 0.10.28
 
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install nodejs make
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install nodejs make build-essential g++
 *  mongodb 2.6.x
 
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 && sudo apt-get update -y && sudo systemctl start mongod
