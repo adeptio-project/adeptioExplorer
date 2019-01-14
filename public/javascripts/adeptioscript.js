@@ -4,7 +4,13 @@
         var tmpMin = Math.round(pInt%60);
         pInt = Math.floor(pInt/60);
         var tmpHours = pInt;
-        return tmpHours + " h " + tmpMin + " min " + tmpSec + " sec";
+
+        if (tmpHours!="0")
+            return tmpHours + " hours";
+        else if (tmpMin!="0")
+            return tmpMin + ' min';
+        else
+            return tmpSec + ' sec';
     }
 
     function formatMilliseconds(s){
