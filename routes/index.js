@@ -372,7 +372,7 @@ router.get('/ext/storade_stats', function(req, res) {
 
         // last seen
         if ("date" in strdData && settings.storade.list_format.lastseen > -1) {
-          strdItem.lastseen = strdData['date'];
+          strdItem.lastseen = parseInt(strdData['date']);
 
           var current_time = new Date().getTime();
 
