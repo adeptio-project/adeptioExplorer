@@ -62,7 +62,7 @@
   "display": {
     "api": true,
     "markets": false,
-    "richlist": true,
+    "richlist": false,
     "twitter": true,
     "facebook": true,
     "googleplus": false,
