@@ -371,8 +371,24 @@ router.get('/ext/storade_stats', function(req, res) {
           strdItem.status = strdData['error'];
 
         // last seen
-        if ("date" in strdData && settings.storade.list_format.lastseen > -1)
-          strdItem.lastseen = strdData['date'];
+        if ("date" in strdData && settings.storade.list_format.lastseen > -1) {
+          strdItem.lastseen = new Date(strdData['date']).getTime();
+
+          var current_time = new Date().getTime();
+
+          var seen_before = current_time - strdItem.lastseen
+
+          if("error" in strdData && !strdData['error']) {
+
+            if( seen_before < 2 * 3600 * 1000 )
+
+              strdItem.status = 'ACTIVE';
+
+            else
+
+              strdItem.status = 'INACTIVE';
+          }
+        }
 
         // os
         if ("os" in strdData && settings.storade.list_format.os > -1)
