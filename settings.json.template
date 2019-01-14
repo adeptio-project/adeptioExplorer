@@ -74,7 +74,7 @@
     "movement": true,
     "network": true,
     "masternodes": true,
-    "storade": false
+    "storade": true
   },
 
  // Masternodes page
