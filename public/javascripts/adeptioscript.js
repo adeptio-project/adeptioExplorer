@@ -4,7 +4,13 @@
         var tmpMin = Math.round(pInt%60);
         pInt = Math.floor(pInt/60);
         var tmpHours = pInt;
-        return tmpHours + " h " + tmpMin + " min " + tmpSec + " sec";
+
+        if (tmpHours!="0")
+            return tmpHours + " hours";
+        else if (tmpMin!="0")
+            return tmpMin + ' min';
+        else
+            return tmpSec + ' sec';
     }
 
     function formatMilliseconds(s){
@@ -23,10 +29,16 @@
         
         var days = Math.trunc(s);
 
-        if (ms<100) ms="0"+ms;
-        if (secs<10) secs="0"+secs;
-        if (mins<10) mins="0"+mins;
-        if (hrs<10) hrs="0"+hrs;
-        if (days<10) days="0"+days;
-        return days + " days " + hrs + ':' + mins + ':' + secs + '.' + ms; 
+        if (days!="0")
+            return days + " days";
+        else if (hrs!="0")
+            return hrs + ' hours';
+        else if (mins!="0")
+            return mins + ' min';
+        else if (secs!="0")
+            return secs + ' sec';
+        else
+            return ms + ' ms';
     }
+
+    function formatBytes(a,b){if(0==a)return"0 Bytes";var c=1024,d=b||2,e=["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+" "+e[f]}
