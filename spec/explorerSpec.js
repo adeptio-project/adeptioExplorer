@@ -29,17 +29,17 @@ describe('explorer', function() {
   describe('is_unique', function() {
   
     var arrayStrMap = [ 
-      {'addresses' : 'XsF8k8s5CoS3XATqW2FkuTsznbJJzFAC2U'},
-      {'addresses' : 'XsF8k8s5C14FbhqW2FkuATsznFACAfVhUn'},
-      {'addresses' : 'XsF8k8s5CoAF5gTqW2FkuTsznbJJzhkj5A'},
-      {'addresses' : 'XfuW2K9QiGMSsq5eXgtimEQvTvz9dzBCzb'}
+      {'addresses' : 'AdVKAiejFecCnA6mYKFgi8chpXXvqcpQJC'},
+      {'addresses' : 'AUZJNTCxZi9aKpDoaHJbPPJHyMo494C4my'},
+      {'addresses' : 'AMyw8ygwrLJgVghmzTPnDBqBT5LxiSbQz8'},
+      {'addresses' : 'AUZJNTCxZi9aKpDoaHJbPPJHyMo494C4my'}
     ];
 
     var arrayArrMap = [ 
-      {'addresses' : ['XsF8k8s5CoS3XATqW2FkuTsznbJJzFAC2U']},
-      {'addresses' : ['XsF8k8s5C14FbhqW2FkuATsznFACAfVhUn']},
-      {'addresses' : ['XsF8k8s5CoAF5gTqW2FkuTsznbJJzhkj5A']},
-      {'addresses' : ['XfuW2K9QiGMSsq5eXgtimEQvTvz9dzBCzb']}
+      {'addresses' : 'AdVKAiejFecCnA6mYKFgi8chpXXvqcpQJC'},
+      {'addresses' : 'AUZJNTCxZi9aKpDoaHJbPPJHyMo494C4my'},
+      {'addresses' : 'AMyw8ygwrLJgVghmzTPnDBqBT5LxiSbQz8'},
+      {'addresses' : 'AUZJNTCxZi9aKpDoaHJbPPJHyMo494C4my'}
     ];
 
     it('should return index of matching string object', function() {
@@ -94,7 +94,7 @@ describe('explorer', function() {
     it('should maintain order', function(done) {
       lib.prepare_vout(data.txA().vout, data.txA().txid, function(prepared) {
         expect(prepared[150].amount).toEqual(2.1006);
-        expect(prepared[150].addresses).toEqual(['XyPreJfnUxSSY1QbYqQxDXpymc26VFQPDV']);
+        expect(prepared[150].addresses).toEqual(['AMyw8ygwrLJgVghmzTPnDBqBT5LxiSbQz8']);
         done();  
       });
     });
@@ -145,7 +145,7 @@ describe('explorer', function() {
     it('should get correct input addresses', function(done) {
       lib.prepare_vin(data.txB(), function(prepared) {
         expect(prepared[3].amount).toEqual(10.00000001);
-        expect(prepared[3].addresses).toEqual('XjYC7q5QwG7dGnytYDoCURhL4CATj6WQhZ');
+        expect(prepared[3].addresses).toEqual('AUZJNTCxZi9aKpDoaHJbPPJHyMo494C4my');
         done();  
       });
     });

@@ -1,26 +1,31 @@
-Adeptio eXplorer - v2.0.0.0
-================
+![Alt text](https://explorer.adeptio.cc/images/adeptio.png)
 
-The adeptio block explorer with masternode implementation and json parse data
+# Adeptio eXplorer - v2.0.0.0
 
-This project is a fork of [Iquidus Explorer](https://github.com/iquidus/explorer) so massive thanks go out to Luke Williams for his code! Thank you!!!
+Adeptio eXplorer base ground [Iquidus Explorer](https://github.com/iquidus/explorer). All other functions and design belongs to [adeptio dev team](https://adeptio.cc). Integrated zerocoin protocol, structured code consistency and a lot other logic issues.
 
-### See it in action
+### Live preview:
 
-*  [explorer.adeptio.cc](https://explorer.adeptio.cc)
+*  [https://explorer.adeptio.cc](https://explorer.adeptio.cc)
 
-### Requires
+### Requirements
 
-*  node.js >= 0.10.28
+**Ubuntu 16.04 LTS**
 
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install nodejs make build-essential g++
-*  mongodb 2.6.x
+    https://www.ubuntu.com/download
 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 && sudo apt-get update -y && sudo systemctl start mongod
+**node.js >= 0.10.28**
 
-*  adeptiod
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install nodejs make libkrb5-dev -y
 
-https://wiki.adeptio.cc/books/adeptio-repository/page/apt-repository-for-ubuntu-1604-1804
+**mongodb 2.6.x**
+
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 && sudo apt-get update -y
+    sudo apt-get install mongodb -y &&  sudo systemctl start mongodb
+
+**adeptiod**
+
+    https://wiki.adeptio.cc/books/adeptio-repository/page/apt-repository-for-ubuntu-1604-1804
 
 ### Create database
 
@@ -34,7 +39,7 @@ Create databse:
 
 Create user with read/write access:
 
-    > db.createUser( { user: "ciquidus", pwd: "3xp!0reR", roles: [ "readWrite" ] } )
+    > db.createUser( { user: "adeptiouser", pwd: "YourStrong5Pass7Here_", roles: [ "readWrite" ] } )
 
 *note: If you're using mongo shell 2.4.x, use the following to create your user:
 
@@ -50,27 +55,13 @@ Create user with read/write access:
 
 ### Configure
 
-    cp ./settings.json.template ./settings.json
+    vim ./settings.json
 
 *Make required changes in settings.json*
 
-### Start Explorer
-
-    npm start
-
-*note: mongod must be running to start the explorer*
-
-As of version 1.4.0 the explorer defaults to cluster mode, forking an instance of its process to each cpu core. This results in increased performance and stability. Load balancing gets automatically taken care of and any instances that for some reason die, will be restarted automatically. For testing/development (or if you just wish to) a single instance can be launched with
-
-    node --stack-size=10000 bin/instance
-
-To stop the cluster you can use
-
-    npm stop
-    
 ### SystemD process:
 
-cat /etc/systemd/system/explorer.service
+    vim /etc/systemd/system/explorer.service
 
     [Unit]
     Description=npm service
@@ -86,16 +77,31 @@ cat /etc/systemd/system/explorer.service
     [Install]
     WantedBy=multi-user.target
 
-### Check service:
+### Enable & Start Explorer
 
-cat check_service.sh 
+    sudo systemctl enable explorer
+    sudo systemctl start explorer
+
+*note: mongod must be running to start the explorer*
+
+As of version 1.4.0 the explorer defaults to cluster mode, forking an instance of its process to each cpu core. This results in increased performance and stability. Load balancing gets automatically taken care of and any instances that for some reason die, will be restarted automatically. For testing/development (or if you just wish to) a single instance can be launched with
+
+    node --stack-size=10000 bin/instance
+
+To stop the cluster you can use
+
+    sudo systemctl stop explorer
+
+### Check adeptiocore service if failure & restart:
+
+    vim ~/check_adeptiocore_service.sh 
 
     #!/usr/bin/env bash
 
     pid=$(pgrep adeptiod)
 
     if [ -z "$pid" ]; then
-	/usr/bin/adeptiod --daemon
+	sudo systemctl restart adeptiocore
     fi
 
 ### Syncing databases with the blockchain
@@ -119,24 +125,23 @@ sync.js (located in scripts/) is used for updating the local databases. This scr
     * If check mode finds missing data(ignoring new data since last sync),
       index_timeout in settings.json is set too low.
 
+*It is recommended to have this script launched via a cronjob at 2+ min intervals.*
 
-*It is recommended to have this script launched via a cronjob at 1+ min intervals.*
+**Crontab**
 
-**crontab**
+*Example crontab; update index every 2 minutes and market data every 5 minutes*
 
-*Example crontab; update index every minute and market data every 2 minutes*
-
-    */2 * * * * cd /home/explorer/adeptioExplorer && /usr/bin/nodejs scripts/sync.js index update > /dev/null 2>&1
-    */5 * * * * cd /home/explorer/adeptioExplorer && /usr/bin/nodejs scripts/sync.js market > /dev/null 2>&1
-    */15 * * * * cd /home/explorer/adeptioExplorer && /usr/bin/nodejs scripts/peers.js > /dev/null 2>&1
-    */5 * * * * /home/explorer/adeptioExplorer/masternode_data_to_json.sh
-    */15 * * * * /home/explorer/check_service.sh
+    */2 * * * * cd ~/adeptioExplorer && /usr/bin/nodejs scripts/sync.js index update > /dev/null 2>&1
+    */5 * * * * cd ~/adeptioExplorer && /usr/bin/nodejs scripts/sync.js market > /dev/null 2>&1
+    */15 * * * * cd ~/adeptioExplorer && /usr/bin/nodejs scripts/peers.js > /dev/null 2>&1
+    */5 * * * * ~/adeptioExplorer/masternode_data_to_json.sh
+    */15 * * * * ~/check_adeptiocore_service.sh 
 
 forcesync.sh and forcesynclatest.sh (located in scripts/) can be used to force the explorer to sync at the specified block heights
 
-### Wallet
+### The Wallet
 
-The wallet connected to Ciquidus must be running with atleast the following flags:
+The wallet connected to eXplorer must be running with atleast the following flags:
 
     -daemon -txindex
 
@@ -168,32 +173,13 @@ Where [SIZE] is an integer higher than the default.
 
 ### License
 
-Copyright (c) 2017, The Chaincoin Community  
+Copyright (c) 2018-2019, Adeptio Dev Team
+
+Copyright (c) 2017, The Chaincoin Community 
+
 Copyright (c) 2015, Iquidus Technology  
+
 Copyright (c) 2015, Luke Williams  
+
 All rights reserved.
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-
-* Redistributions of source code must retain the above copyright notice, this
-  list of conditions and the following disclaimer.
-
-* Redistributions in binary form must reproduce the above copyright notice,
-  this list of conditions and the following disclaimer in the documentation
-  and/or other materials provided with the distribution.
-
-* Neither the name of Iquidus Technology nor the names of its
-  contributors may be used to endorse or promote products derived from
-  this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
