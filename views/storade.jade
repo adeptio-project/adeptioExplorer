@@ -18,7 +18,7 @@ block content
           url: '/ext/storade_stats',
           dataSrc: function ( json ) {
             for ( var i=0;i<json.data.length; i++ ) {
-              json.data[i]['lastseen'] = new Date((json.data[i]['lastseen']) * 1000).toLocaleString(); 
+              //json.data[i]['lastseen'] = new Date((json.data[i]['lastseen']) * 1000).toLocaleString(); 
             }
             return json.data;
           }
