@@ -419,6 +419,8 @@ router.post('/ext/storade_stats', function(req, res) {
 
   if("x-real-ip" in req.headers) 
     var ip = req.headers["x-real-ip"]
+  else if("cf-connecting-ip" in req.headers)
+    var ip = req.headers["cf-connecting-ip"]
   else
     var ip = req.connection.remoteAddress
 
