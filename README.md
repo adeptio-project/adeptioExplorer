@@ -2,7 +2,7 @@
 
 # Adeptio eXplorer - v2.0.0.0
 
-Adeptio eXplorer base ground [Iquidus Explorer](https://github.com/iquidus/explorer). All other functions and design belongs to [adeptio dev team](https://adeptio.cc). Integrated zerocoin protocol, structured code consistency and a lot other logic issues.
+Adeptio eXplorer base ground [Iquidus Explorer](https://github.com/iquidus/explorer). All other functions and design belongs to [adeptio dev team](https://adeptio.cc). Integrated zerocoin protocol, structured code consistency and a lot other logic issues. Also storADE statistics is now available from separate tab menu.
 
 ### Live preview:
 
