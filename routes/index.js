@@ -380,7 +380,7 @@ router.get('/ext/storade_stats', function(req, res) {
 
           if("error" in strdData && !strdData['error']) {
 
-            if( seen_before < 2 * 3600 * 1000 )
+            if( seen_before < 4 * 3600 * 1000 )
 
               strdItem.status = 'ACTIVE';
 
