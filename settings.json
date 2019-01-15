@@ -117,14 +117,11 @@
   // index page (valid options for difficulty are POW, POS or Hybrid)
   "index": {
     "show_hashrate": true,
-<<<<<<< HEAD
     "difficulty": "POW",
     "last_txs": 100,
     "last_blocks": 100
-=======
     "difficulty": "Hybrid",
     "last_txs": 1000
->>>>>>> master
   },
 
   // ensure links on API page are valid
