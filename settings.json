@@ -106,11 +106,12 @@
     // -1 means that the info is not available.
     "list_format": {
       "ip": 1,
-      "status": 2,
-      "lastseen": 3,
-      "os": 4,
-      "python": 5,
-      "free_storage": 6
+      "mn_ip": 2,
+      "status": 3,
+      "lastseen": 4,
+      "os": 5,
+      "python": 6,
+      "free_storage": 7
     }
   },
 
