@@ -26,6 +26,7 @@ block content
         },
         columns: [
           { data: 'ip', width: '20%', className: 'text-left' },
+          { data: 'mn_ip', width: '12%' },
           { data: 'status', width: '12%' },
           { data: 'lastseen', width:'12%' },
           { data: 'os', width:'12%' },
@@ -42,6 +43,7 @@ block content
         thead
           tr
             th #{settings.locale.strd_ip}
+            th.text-center #{settings.locale.strd_mn_ip}
             th.text-center #{settings.locale.strd_status}
             th.text-center #{settings.locale.strd_lastseen}
             th.text-center #{settings.locale.strd_os}
