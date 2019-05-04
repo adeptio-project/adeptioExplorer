@@ -355,6 +355,7 @@ router.get('/ext/storade_stats', function(req, res) {
         var strdData = list[key]
         var strdItem = {
           ip: "",
+          mn_ip: "",
           status: "",
           lastseen: "",
           os: "",
@@ -365,6 +366,10 @@ router.get('/ext/storade_stats', function(req, res) {
         // IP
         if ("ip" in strdData && settings.storade.list_format.ip > -1)
           strdItem.ip = strdData['ip'];
+
+        // Masternode IP
+        if ("mn_ip" in strdData && settings.storade.list_format.mn_ip > -1)
+          strdItem.mn_ip = strdData['mn_ip'];
 
         // Status
         if ("error" in strdData && settings.storade.list_format.status > -1)
