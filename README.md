@@ -173,7 +173,7 @@ Where [SIZE] is an integer higher than the default.
 
 ### License
 
-Copyright (c) 2018-2019, Adeptio Dev Team
+Copyright (c) 2018-2020, Adeptio Dev Team
 
 Copyright (c) 2017, The Chaincoin Community 
 
