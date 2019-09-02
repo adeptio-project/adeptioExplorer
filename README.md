@@ -10,7 +10,7 @@ Adeptio eXplorer base ground [Iquidus Explorer](https://github.com/iquidus/explo
 
 ### Requirements
 
-**Ubuntu 16.04 LTS**
+**Ubuntu 16.04 LTS or Ubuntu 18.04 LT**
 
     https://www.ubuntu.com/download
 
